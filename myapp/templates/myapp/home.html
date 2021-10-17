@@ -1,0 +1,40 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text formatter</title>
+</head>
+
+<body>
+    <h1>Welcome {{ request.user.first_name }} {{request.user.last_name}}!</h1>
+    <button><a href="{% url 'signup'%}">Signup</a></button>
+    <button><a href="{% url 'login'%}">Login</a></button><br><br><br>
+    <form action="{% url 'home' %}" method="POST">
+        {% csrf_token %}
+        <textarea cols="74" rows="16" name="text1" style="margin-left: 50px;">Paste your text here :)</textarea>
+        <textarea cols="74" rows="16" name="text2" style="float: inline-end; margin-left: 50px;">
+        {% for i in ans %}
+            {{i}}
+        {% endfor %}
+        </textarea><br>
+        <div style="margin-left: 70px;">
+            <label for="choose"><b>Choose what you want to do</b></label><br>
+            <input type="radio" name="choose" value="choose1">Extract numbers from a string greater than 100 <br>
+            <input type="radio" name="choose" value="choose2">Extract date from a url string (yyyy-mm-dd) <br>
+            <input type="radio" name="choose" value="choose3">Extract strings within single quotes in a string <br>
+            <input type="radio" name="choose" value="choose4">Email validator <br>
+            <input type="radio" name="choose" value="choose5">Validate IP addresses and determine class <br>
+            <input type="radio" name="choose" value="choose6">Validate MAC address <br>
+            <input type="radio" name="choose" value="choose7">Convert CamelCase to snake_case <br><br>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+
+    <!-- <a href="{% url 'logout' %}">Log Out</a> -->
+
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+
+    <style>
+        h3 {
+            color: rgb(255, 57, 57);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Sign Up</h1>
+
+    <form action="{% url 'home' %}" method="POST">
+        {% csrf_token %}
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+
+        <div>
+            {% for message in messages %}
+            <h3> {{ message }} </h3>
+            {% endfor %}
+        </div>
+
+        <label for="username"><b>Enter your Username</b></label>
+        <input type="text" placeholder="Username" name="username" required><br><br>
+
+        <label for="fname"><b>Enter First Name</b></label>
+        <input type="text" placeholder="First name" name="fname" required><br><br>
+
+        <label for="lname"><b>Enter Last Name</b></label>
+        <input type="text" placeholder="Last name" name="lname" required><br><br>
+
+        <label for="gender"><b>What is your Gender?</b></label><br>
+        <input type="radio" name="gender" value="male">Male
+        <input type="radio" name="gender" value="female">Female
+        <input type="radio" name="gender" value="other">Other
+        <br><br>
+
+        <label for="number"><b>Enter Phone Number</b></label>
+        <input type="number" name="number" required><br><br>
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" required><br><br>
+
+        <label for="pass1"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="pass1" required><br><br>
+
+        <label for="pass2"><b>Confirm Password</b></label>
+        <input type="password" placeholder="Confirm Password" name="pass2" required><br><br>
+
+        <input type="submit" value="Signup"><br><br>
+        Already have an account? <a href="{% url 'login' %}">Login Here</a><br><br>
+
+
+    </form>
+
+</body>
+
+</html>
